@@ -1,0 +1,96 @@
+checks admin and prints users in terminal 
+mawk -F: '$1 == "sudo"' /etc/group
+
+
+checks users  and prints users in terminal
+mawk -F: '$3 > 999 && $3 < 65534 {print $1}' /etc/passwd
+
+
+use this to delete users where the brakcets are put the users name
+userdel <user>
+groupdel <user>
+
+
+use this to add users press enter untill the confermatinon after entering password make the pass word Cyb3rPatr!0t$
+sudo adduser <username>
+
+
+go to this file and add/remove user from admin/sudoer 
+nano /etc/group
+
+get to user folder
+pico /etc/passwd
+
+
+checks for non root users
+mawk -F: '$3 == 0 && $1 != "root"' /etc/passwd
+
+
+change users  passwords DO FOR ALL USERS
+sudo passwd <user>
+new pass word Cyb3rPatr!0t$
+
+
+checks for empty passwords
+mawk -F: '$2 == ""' /etc/passwd
+
+
+checks for files
+find /home/ -type f \( -name "*.mp3" -o -name "*.mp4" \)
+
+
+bad stuff
+john, nmap, vuze, frostwire, kismet, freeciv, minetest, minetest-server, medusa, hydra, truecrack, ophcrack, nikto, cryptcat, nc, netcat, tightvncserver, x11vnc, nfs, xinetd
+
+
+potentaly bad stuff
+samba, postgresql, sftpd, vsftpd, apache, apache2, ftp, mysql, php, snmp, pop3, icmp, sendmail, dovecot, bind9, nginx
+
+
+big bad stuff
+telnet, rlogind, rshd, rcmd, rexecd, rbootd, rquotad, rstatd, rusersd, rwalld, rexd, fingerd, tftpd, telnet, snmp, netcat, nc
+
+
+disable peripirals 
+echo 'install usb-storage /bin/true' >> /etc/modprobe.d/disable-usb-storage.conf
+echo "blacklist firewire-core" >> /etc/modprobe.d/firewire.conf
+echo "blacklist thunderbolt" >> /etc/modprobe.d/thunderbolt.conf
+
+
+virus scan stuff
+
+#downlading
+sudo apt update
+sudo apt install clamav chkrootkit rkhunter
+
+#updating virus database
+sudo freshclam
+
+#scan for viruses 
+clamscan
+clamscan -r
+
+#run chkrootkit
+chkrootkit -l
+
+
+#run RKHunter
+rkhunter --update
+rkhunter --propupd
+rkhunter -c --enable all --disable none
+
+#remove antivirus 
+sudo apt remove clamav chkrootkit rkhunter
+sudo apt autoremove
+
+
+disable ipv6 
+
+echo "net.ipv6.conf.all.disable_ipv6 = 1" | sudo tee -a /etc/sysctl.confecho "net.ipv6.conf.all.disable_ipv6 = 1" | sudo tee -a /etc/sysctl.conf
+
+
+disable ip forwarding
+
+echo 0 | sudo tee /proc/sys/net/ipv4/ip_forward
+
+
