@@ -1,0 +1,145 @@
+General System Commands
+
+Check Windows Version:
+winver
+
+System Information:
+systeminfo
+
+Check Computer Name:
+hostname
+
+Shutdown or Restart:
+Copy code
+shutdown /s /t 0   (Shut down immediately)  
+shutdown /r /t 0   (Restart immediately)  
+
+Task Manager Shortcut:
+taskmgr
+
+User Management
+Create a New User:
+net user <username> <password> /add
+
+Delete a User:
+Copy code
+net user <username> /delete
+
+Add User to Administrators Group:
+net localgroup administrators <username> /add
+
+Remove User from Group:
+net localgroup administrators <username> /delete
+
+List All Users:
+net user
+
+Network Configuration
+
+Check IP Configuration:
+Copy code
+ipconfig
+
+View Detailed Network Information:
+ipconfig /all
+
+Release and Renew IP Address:
+ipconfig /release  
+ipconfig /renew
+
+Check Network Connectivity:
+ping <hostname or IP>  
+
+Trace Route to a Host:
+tracert <hostname or IP>
+
+View Active Connections:
+netstat -an
+
+Firewall Commands
+
+Check Firewall Status:
+netsh advfirewall show allprofiles
+
+Enable/Disable Windows Firewall:
+netsh advfirewall set allprofiles state on  
+netsh advfirewall set allprofiles state off
+
+Allow a Program through Firewall:
+netsh advfirewall firewall add rule name="<Rule Name>" dir=in action=allow program="<Path>" enable=yes
+File and Folder Management
+
+List Files in a Directory:
+dir
+
+Change Directory:
+cd <path>
+
+Create a New Directory:
+mkdir <folder-name>
+
+Delete a File or Directory:
+del <file-name>   (Delete file)  
+rmdir <folder-name> /s /q   (Delete folder and subfolders)  
+
+Copy Files:
+xcopy <source> <destination> /s /e
+
+Disk Management
+
+Check Disk Usage:
+chkdsk
+
+List Volumes:
+diskpart  
+list volume
+
+Format a Drive:
+format <drive-letter>: /fs:<filesystem>  
+
+Example: format D: /fs:NTFS
+
+Event Logs and System Monitoring
+
+View Event Logs:
+
+eventvwr
+
+View Running Processes:
+tasklist
+
+Kill a Process:
+taskkill /PID <process-id> /F  
+taskkill /IM <process-name> /F
+
+Group Policy Management
+
+Open Group Policy Editor:
+gpedit.msc
+
+Force Group Policy Update:
+gpupdate /force
+
+Windows Server-Specific Commands
+
+Promote a Server to a Domain Controller:
+dcpromo
+
+List Active Directory Users:
+dsquery user
+
+Create a New Active Directory User:
+dsadd user "CN=<username>,OU=<organizational unit>,DC=<domain>,DC=<com>" -samid <username> -pwd <password> -memberof "CN=<group>,OU=<organizational unit>,DC=<domain>,DC=<com>"
+
+List Installed Roles and Features:
+Get-WindowsFeature
+
+Install a Role or Feature:
+Install-WindowsFeature -Name <feature-name>
+
+Remove a Role or Feature:
+Uninstall-WindowsFeature -Name <feature-name>
+
+Restart Domain Services:
+net stop netlogon  
+net start netlogon

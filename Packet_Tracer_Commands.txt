@@ -1,0 +1,168 @@
+
+# Cisco Packet Tracer Commands and Tips
+
+## Basic Navigation
+
+### Accessing Packet Tracer CLI
+- Click on a device (e.g., Router, Switch).
+- Go to the **CLI** tab to enter commands.
+
+### Switching Modes
+- **User EXEC Mode**:
+  ```
+  Router>
+  ```
+  Limited access to commands.
+- **Privileged EXEC Mode**:
+  ```
+  Router#
+  ```
+  Access by typing `enable` in User EXEC mode.
+- **Global Configuration Mode**:
+  ```
+  Router(config)# 
+  ```
+  Access by typing `configure terminal` in Privileged EXEC mode.
+
+## Configuring Devices
+
+### Assigning an IP Address to an Interface
+1. Enter Global Configuration Mode:
+   ```
+   Router# configure terminal
+   ```
+2. Select the interface:
+   ```
+   Router(config)# interface <interface-id>
+   ```
+   Example: `interface g0/0`
+3. Assign an IP address and subnet mask:
+   ```
+   Router(config-if)# ip address <IP> <Subnet Mask>
+   ```
+   Example: `ip address 192.168.1.1 255.255.255.0`
+4. Enable the interface:
+   ```
+   Router(config-if)# no shutdown
+   ```
+
+### Configuring Hostname
+- Set a hostname for the device:
+  ```
+  Router(config)# hostname <name>
+  ```
+
+### Setting Up a Banner
+- Configure a message of the day (MOTD) banner:
+  ```
+  Router(config)# banner motd #Your Message Here#
+  ```
+
+### Password Protection
+- Set a console password:
+  ```
+  Router(config)# line console 0
+  Router(config-line)# password <password>
+  Router(config-line)# login
+  ```
+
+- Set a password for Privileged EXEC mode:
+  ```
+  Router(config)# enable password <password>
+  ```
+
+## Testing and Verification
+
+### Testing Connectivity
+- Use the ping command:
+  ```
+  Router# ping <destination-IP>
+  ```
+
+### Viewing Interface Status
+- Show all interfaces and their statuses:
+  ```
+  Router# show ip interface brief
+  ```
+
+### Checking Running Configuration
+- Display the current configuration:
+  ```
+  Router# show running-config
+  ```
+
+### Saving Configuration
+- Save the running configuration to NVRAM:
+  ```
+  Router# copy running-config startup-config
+  ```
+
+## Routing
+
+### Setting a Static Route
+1. Enter Global Configuration Mode:
+   ```
+   Router# configure terminal
+   ```
+2. Define a static route:
+   ```
+   Router(config)# ip route <destination-network> <subnet-mask> <next-hop-IP>
+   ```
+   Example: `ip route 192.168.2.0 255.255.255.0 192.168.1.2`
+
+## VLAN Configuration (Switches)
+
+### Creating a VLAN
+1. Enter Global Configuration Mode:
+   ```
+   Switch# configure terminal
+   ```
+2. Create a VLAN and assign a number:
+   ```
+   Switch(config)# vlan <VLAN-ID>
+   ```
+   Example: `vlan 10`
+
+3. Assign a name to the VLAN:
+   ```
+   Switch(config-vlan)# name <VLAN-Name>
+   ```
+
+### Assigning a Port to a VLAN
+1. Select the interface:
+   ```
+   Switch(config)# interface <interface-id>
+   ```
+   Example: `interface fa0/1`
+2. Assign the interface to the VLAN:
+   ```
+   Switch(config-if)# switchport access vlan <VLAN-ID>
+   ```
+
+### Viewing VLAN Information
+- Display VLAN configurations:
+  ```
+  Switch# show vlan brief
+  ```
+
+## Miscellaneous
+
+### Erasing Configuration
+- Reset device to default settings:
+  ```
+  Router# write erase
+  Router# reload
+  ```
+
+### Viewing MAC Address Table
+- Check MAC address table on a switch:
+  ```
+  Switch# show mac address-table
+  ```
+
+### Debugging
+- Enable debugging for specific protocols:
+  ```
+  Router# debug <protocol>
+  ```
+  Example: `debug ip routing`

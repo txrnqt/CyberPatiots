@@ -1,0 +1,131 @@
+
+# Linux Commands for CyberPatriot: Debian, Fedora, and Red Hat Distros
+
+## User Management
+
+### Adding and Managing Users
+- **Debian/Ubuntu**:
+  sudo adduser <username>
+- **Fedora/Red Hat**:
+  sudo useradd <username>
+  sudo passwd <username>
+
+#### Deleting Users
+- **All Distros**:
+  sudo userdel <username>
+  sudo rm -r /home/<username>  # Remove user's home directory
+
+#### Adding Users to Groups
+- **Debian/Ubuntu**:
+  sudo usermod -aG <groupname> <username>
+- **Fedora/Red Hat**:
+  sudo usermod -a -G <groupname> <username>
+
+## Package Management
+
+### Updating the System
+- **Debian/Ubuntu**:
+  sudo apt update && sudo apt upgrade -y
+- **Fedora/Red Hat**:
+  sudo dnf update -y
+
+### Installing and Removing Packages
+#### Installing a Package
+- **Debian/Ubuntu**:
+  sudo apt install <package-name>
+- **Fedora/Red Hat**:
+  sudo dnf install <package-name>
+
+#### Removing a Package
+- **Debian/Ubuntu**:
+  sudo apt remove <package-name>
+- **Fedora/Red Hat**:
+  sudo dnf remove <package-name>
+
+## Firewall Configuration
+
+### Checking Firewall Status
+- **All Distros**:
+  sudo ufw status  # For Debian/Ubuntu (if UFW is installed)
+  sudo firewall-cmd --state  # For Fedora/Red Hat
+
+### Enabling and Disabling the Firewall
+- **Debian/Ubuntu**:
+  sudo ufw enable
+  sudo ufw disable
+- **Fedora/Red Hat**:
+  sudo systemctl start firewalld
+  sudo systemctl stop firewalld
+
+### Allowing or Blocking Ports
+- **Debian/Ubuntu**:
+  sudo ufw allow <port>/tcp
+  sudo ufw deny <port>/tcp
+- **Fedora/Red Hat**:
+  sudo firewall-cmd --add-port=<port>/tcp --permanent
+  sudo firewall-cmd --remove-port=<port>/tcp --permanent
+  sudo firewall-cmd --reload
+
+## System Monitoring
+
+### Checking System Resources
+- **All Distros**:
+  top
+  htop  # If installed
+
+### Monitoring Disk Usage
+- **All Distros**:
+  df -h
+  du -sh <directory>
+
+### Viewing Open Network Connections
+- **All Distros**:
+  netstat -tuln  # May need to install `net-tools`
+  ss -tuln       # Modern alternative
+
+## Log Management
+
+### Viewing System Logs
+- **All Distros**:
+  sudo journalctl -xe
+  sudo less /var/log/syslog  # Debian/Ubuntu
+  sudo less /var/log/messages  # Fedora/Red Hat
+
+### Clearing Logs
+- **All Distros**:
+  sudo truncate -s 0 /var/log/<logfile>
+
+## Permissions and Ownership
+
+### Changing Ownership
+- **All Distros**:
+  sudo chown <user>:<group> <file/directory>
+
+### Modifying Permissions
+- **All Distros**:
+  sudo chmod <permissions> <file/directory>
+
+## Networking
+
+### Displaying IP Addresses
+- **All Distros**:
+  ip addr
+
+### Testing Network Connectivity
+- **All Distros**:
+  ping <hostname/IP>
+
+## Miscellaneous Tasks
+
+### Searching for Files
+- **All Distros**:
+  find / -name <filename>
+
+### Checking Kernel Version
+- **All Distros**:
+  uname -r
+
+### Scheduling a Task
+- **All Distros**:
+  crontab -e
+
